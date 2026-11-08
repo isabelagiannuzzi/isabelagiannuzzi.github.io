@@ -138,83 +138,13 @@ h1 {
 
 .nota { margin-top: .75rem; font-size: 1rem; }
 
-/* Lista de momentos: a peça central da página */
-.momentos {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
-  gap: clamp(2rem, 5vw, 5rem);
-  padding: var(--respiro) var(--margem);
-  /* Começa no tom da abertura e passa aos poucos para o rosado */
-  background: linear-gradient(to bottom, var(--sala) 0, var(--rosado-claro) var(--transicao)) var(--rosado-claro);
-}
-
-.momentos-intro p { margin-top: 1rem; max-width: 26em; }
-
-.momentos-lista details { border-top: 1px solid var(--palavra); }
-.momentos-lista details:last-child { border-bottom: 1px solid var(--palavra); }
-
-.momentos-lista summary {
-  position: relative;
-  padding: 1.375rem 3rem 1.375rem 0;
-  font: 400 clamp(1.5rem, 2.6vw, 2.25rem)/1.25 var(--fonte-titulo);
-  list-style: none;
-  cursor: pointer;
-  touch-action: manipulation;
-}
-.momentos-lista summary::-webkit-details-marker { display: none; }
-
-/* Sinal de abrir: vira um "x" quando o item está aberto */
-.momentos-lista summary::before,
-.momentos-lista summary::after {
-  content: '';
-  position: absolute;
-  right: .25rem;
-  top: 50%;
-  width: 1.25rem;
-  height: 1.5px;
-  background: currentColor;
-  transition: transform .2s ease;
-}
-.momentos-lista summary::after { transform: rotate(90deg); }
-
-.momentos-lista summary:hover { color: var(--texto-forte); }
-.momentos-lista details[open] summary::before { transform: rotate(45deg); }
-.momentos-lista details[open] summary::after { transform: rotate(135deg); }
-
-/* A abertura e o fechamento são animados em script.js */
-.momento-corpo.animando { overflow: hidden; }
-
-.momento-corpo { padding: 0 0 2.25rem; }
-.momento-corpo > p { max-width: 34em; }
-
-.rascunho-rotulo { margin-top: 1.25rem; font-size: 1rem; font-weight: 700; }
-
-/* Campo de mensagem: o texto e o botão de enviar ficam juntos, como no WhatsApp */
-.compositor {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  max-width: 40em;
-  margin-top: .5rem;
-  padding: .75rem .75rem .75rem 1.25rem;
-  border-radius: 34px;
-  background: var(--fundo-claro);
-}
-.rascunho { flex: 1; min-width: 0; line-height: 1.45; }
-.compositor .botao { flex: none; padding-right: 1.375rem; }
-.compositor .botao:hover { background: var(--rosado-claro); }
-
-.compositor-nota { margin-top: .625rem; font-size: 1rem; }
-
 /* Carta */
 /* A foto fica à esquerda porque o olhar de Isabela aponta para o texto */
 .carta {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  /* Começa no rosado da seção de cima e passa aos poucos para o tom da foto */
-  background: linear-gradient(to bottom, var(--rosado-claro) 0, var(--conversa) var(--transicao)) var(--conversa);
+  /* Começa no tom da abertura e passa aos poucos para o tom da foto */
+  background: linear-gradient(to bottom, var(--sala) 0, var(--conversa) var(--transicao)) var(--conversa);
 }
 
 .carta-foto { position: relative; min-width: 0; }
@@ -343,7 +273,7 @@ h3 { margin-top: 3rem; font-size: 1.625rem; line-height: 1.3; }
 
 /* Tablet e celular */
 @media (max-width: 860px) {
-  .momentos, .carta, .comecar { grid-template-columns: minmax(0, 1fr); }
+  .carta, .comecar { grid-template-columns: minmax(0, 1fr); }
 
   .sala {
     min-height: 0;
@@ -395,15 +325,6 @@ h3 { margin-top: 3rem; font-size: 1.625rem; line-height: 1.3; }
     padding-right: .75rem;
     font-size: 1rem;
   }
-
-  .compositor {
-    flex-direction: column;
-    align-items: stretch;
-    gap: .75rem;
-    padding: 1rem 1rem .75rem;
-    border-radius: 24px;
-  }
-  .compositor .botao { justify-content: center; }
 }
 
 @media (prefers-reduced-motion: reduce) {
